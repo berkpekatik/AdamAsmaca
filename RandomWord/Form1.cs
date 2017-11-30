@@ -20,29 +20,32 @@ namespace RandomWord
         public static char[] arrayWords;
         public static int wordRandom;
         Random random = new Random();
-        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-            
+
             wordRandom = random.Next(0, words.Length);//words[]'deki mevcut kelime kadar olan random üretimi
+            label1.Text = words[wordRandom];
             arrayWords = words[wordRandom].ToCharArray();//Rastgele seçilen Cümlenin Harfleri
             TextBox[] textbox = new TextBox[arrayWords.Length];//Oluşturulacak kelime ağacı uzunluğu 
             for (int i = 0; i < arrayWords.Length; i++)//Kullanılan kelimenin parça uzunluğu
             {
-                
+
                 textbox[i] = new TextBox();
-                textbox[i].Text = arrayWords[i].ToString();
+                textbox[i].Text = "";
+                textbox[i].Name = "textbox-" + i;
                 panel1.Controls.Add(textbox[i]);//Her bir Kelimenin textBox'a basılması
                 textbox[i].Top = 30;
-                textbox[i].Left = i * 30; 
+                textbox[i].Left = i * 30;
                 textbox[i].Width = 30;
+                textbox[i].Click += button3_Click;
 
             }
             button1.Enabled = false;
@@ -61,12 +64,20 @@ namespace RandomWord
 
         }
 
+
         private void button3_Click(object sender, EventArgs e)
         {
-            int giveNumber = random.Next(0, words[wordRandom].Length);
-            label1.Text = giveNumber.ToString();
-           
+            var textbox = (TextBox)sender;
+            var index = int.Parse(textbox.Name.Split('-')[1]);
+            if (textbox.Text == arrayWords[index].ToString())
+            {
+                error.Text = "Doğru Tahmin!";
 
+            }
+            else
+            {
+                error.Text = "Yanlış Tahmin!";
+            }
         }
     }
 }
