@@ -38,7 +38,7 @@ namespace RandomWord
             {
                 
                 textbox[i] = new TextBox();
-                textbox[i].Text = "*";
+                textbox[i].Text = arrayWords[i].ToString();
                 panel1.Controls.Add(textbox[i]);//Her bir Kelimenin textBox'a basılması
                 textbox[i].Top = 30;
                 textbox[i].Left = i * 30; 
