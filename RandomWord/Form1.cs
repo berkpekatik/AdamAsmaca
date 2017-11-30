@@ -27,6 +27,28 @@ namespace RandomWord
 
         }
 
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+
+
+        //    wordRandom = random.Next(0, words.Length);//words[]'deki mevcut kelime kadar olan random üretimi
+        //    arrayWords = words[wordRandom].ToCharArray();//Rastgele seçilen Cümlenin Harfleri
+        //    TextBox[] textbox = new TextBox[arrayWords.Length];//Oluşturulacak kelime ağacı uzunluğu 
+        //    for (int i = 0; i < arrayWords.Length; i++)//Kullanılan kelimenin parça uzunluğu
+        //    {
+
+        //        textbox[i] = new TextBox();
+        //        textbox[i].Text = arrayWords[i].ToString();
+        //        panel1.Controls.Add(textbox[i]);//Her bir Kelimenin textBox'a basılması
+        //        textbox[i].Top = 30;
+        //        textbox[i].Left = i * 30; 
+        //        textbox[i].Width = 30;
+
+        //    }
+        //    button1.Enabled = false;
+        //    button2.Enabled = true;
+        //}
+
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -39,18 +61,43 @@ namespace RandomWord
             {
 
                 textbox[i] = new TextBox();
+<<<<<<< HEAD
                 textbox[i].Text = "";
+=======
+                textbox[i].Text = arrayWords[i].ToString();
+>>>>>>> 4dcfc4e7752f4450ae9db614f04cabd3eb72e193
                 textbox[i].Name = "textbox-" + i;
                 panel1.Controls.Add(textbox[i]);//Her bir Kelimenin textBox'a basılması
                 textbox[i].Top = 30;
                 textbox[i].Left = i * 30;
                 textbox[i].Width = 30;
+<<<<<<< HEAD
                 textbox[i].Click += button3_Click;
+=======
+                textbox[i].KeyPress += Form1_KeyPress;
+>>>>>>> 4dcfc4e7752f4450ae9db614f04cabd3eb72e193
 
             }
             button1.Enabled = false;
             button2.Enabled = true;
         }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+
+            var index = int.Parse(textbox.Name.Split('-')[1]);
+
+            if (textbox.Text == arrayWords[index].ToString())
+            {
+                MessageBox.Show("ok");
+            }
+            else
+            {
+                MessageBox.Show("fail");
+            }
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -67,11 +114,17 @@ namespace RandomWord
 
         private void button3_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             var textbox = (TextBox)sender;
             var index = int.Parse(textbox.Name.Split('-')[1]);
             if (textbox.Text == arrayWords[index].ToString())
             {
                 error.Text = "Doğru Tahmin!";
+=======
+            int giveNumber = random.Next(0, words[wordRandom].Length);
+            label1.Text = giveNumber.ToString();
+
+>>>>>>> 4dcfc4e7752f4450ae9db614f04cabd3eb72e193
 
             }
             else
